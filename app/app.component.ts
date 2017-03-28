@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
         <p>{{currentRecipe.ingredients}}</p>
         <h5>Instructions</h5>
         <p>{{currentRecipe.instructions}}</p>
-        <button (click)="editRecipe(clickedRecipe)">Edit</button>
+        <button (click)="editRecipe(currentRecipe)">Edit</button>
     </div>
 
     <div *ngIf="selectedRecipe">
@@ -46,6 +46,7 @@ export class AppComponent  {
 
 
     editRecipe(clickedRecipe) {
+        console.log(clickedRecipe);
         this.selectedRecipe = clickedRecipe;
     }
 
