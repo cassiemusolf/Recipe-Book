@@ -14,6 +14,13 @@ import { Component } from '@angular/core';
     </div>
 
     <div>
+        <h3>Edit Task</h3>
+        <input [(ngModel)]="selectedRecipe.recipeName"><br>
+        <input [(ngModel)]="selectedRecipe.ingredients"><br>
+        <input [(ngModel)]="selectedRecipe.instructions"><br>
+    </div>
+
+    <div>
         <h3>Add new recipe</h3>
             <form>
                 <input #newRecipeName type="text" ng-model="recipeName" placeholder="Name of recipe">
@@ -34,7 +41,7 @@ export class AppComponent  {
         new Recipe('Grilled Cheese', 'Grill and Cheese', 'Use Grill to Cheese')
     ];
 
-    selectedRecipe = null;
+    selectedRecipe: Recipe = this.masterRecipeList[0];
 
     hideEdit() {
         this.selectedRecipe = null;
