@@ -10,14 +10,15 @@ import { Component } from '@angular/core';
         <p>{{currentRecipe.ingredients}}</p>
         <h5>Instructions</h5>
         <p>{{currentRecipe.instructions}}</p>
-        <button (click)="editRecipe()">Edit</button>
+        <button (click)="editRecipe(clickedRecipe)">Edit</button>
     </div>
 
-    <div>
+    <div *ngIf="selectedRecipe">
         <h3>Edit Task</h3>
         <input [(ngModel)]="selectedRecipe.recipeName"><br>
         <input [(ngModel)]="selectedRecipe.ingredients"><br>
         <input [(ngModel)]="selectedRecipe.instructions"><br>
+        <button (click)="hideEdit()">Done</button>
     </div>
 
     <div>
@@ -41,14 +42,15 @@ export class AppComponent  {
         new Recipe('Grilled Cheese', 'Grill and Cheese', 'Use Grill to Cheese')
     ];
 
-    selectedRecipe: Recipe = this.masterRecipeList[0];
+    selectedRecipe = null;
+
+
+    editRecipe(clickedRecipe) {
+        this.selectedRecipe = clickedRecipe;
+    }
 
     hideEdit() {
         this.selectedRecipe = null;
-    }
-
-    editRecipe() {
-        alert("Button clicky")
     }
 
     addRecipe(newRecipe: Recipe) {
